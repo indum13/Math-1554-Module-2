@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section xml:id="moduleone">
+    <title>Module 1: The Invertible Matrix Theorem</title>
+
+    <introduction>
+        <p>This module covers the synthesis of matrix invertibility concepts.</p>
+    </introduction>
+
+    <subsection xml:id="subsec-imt-equivalence">
+        <title>Equivalent Expressions</title>
+        <p>The Invertible Matrix Theorem gives us many ways of saying the same thing.</p>
+    </subsection>
+
+    <subsection xml:id="subsec-imt-composition">
+        <title>Invertibility and Composition</title>
+        <p>The inverse <m>A^{-1}</m> transforms <m>A\vec{x}</m> back to <m>\vec{x}</m>.</p>
+    </subsection>
+</section>
