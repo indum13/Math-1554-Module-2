@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<section xml:id="sec-lu-factorization">
+  <title>Module 2: Solving Linear Systems with the LU Factorization</title>
+
+  <introduction>
+    <objectives>
+      <title>Topics and Objectives</title>
+      <p>Topics: We will explore the following concepts in this video:</p>
+      <ul>
+        <li><p>triangular matrices</p></li>
+        <li><p>the LU factorization of a matrix</p></li>
+        <li><p>using the LU factorization to solve a system</p></li>
+      </ul>
+      <p>Objectives: Students should be able to do the following after watching this video:</p>
+      <ul>
+        <li><p>identify and construct triangular matrices</p></li>
+        <li><p>apply the LU factorization to solve systems of equations</p></li>
+      </ul>
+    </objectives>
+
+    <p><term>Mathematical Ingenuity</term></p>
+    <blockquote cite="Alan Turing">
+      <p>
+        <q>Mathematical reasoning may be regarded rather schematically as the exercise of a combination of two facilities, which we may call intuition and ingenuity.</q>
+      </p>
+      <attribution>Alan Turing</attribution>
+    </blockquote>
+    <p>
+      The use of the LU Decomposition to solve linear systems was one of the areas of mathematics that Turing helped develop. The decomposition is widely used to solve linear systems of equations.
+    </p>
+  </introduction>
+
+  <subsection xml:id="subsec-motivation">
+    <title>Motivation</title>
+    <p>
+      We have previously seen that we could solve <m>A\vec{x} = \vec{b}</m> by using <m>\vec{x} = A^{-1}\vec{b}</m>. However, this approach has several practical limitations:
+    </p>
+    <ul>
+      <li><p>It requires computation of the inverse of an <m>n \times n</m> matrix, which is especially difficult for large <m>n</m>.</p></li>
+      <li><p>While we could use Gaussian Elimination instead, this is not efficient for large <m>n</m>.</p></li>
+      <li><p>There are more efficient and accurate methods for solving linear systems that rely on matrix factorizations.</p></li>
+    </ul>
+  </subsection>
+
+  <subsection xml:id="subsec-matrix-factorizations">
+    <title>Matrix Factorizations</title>
+    <p>
+      A <term>matrix factorization</term>, or <term>matrix decomposition</term>, is a factorization of a matrix into a product of matrices. Factorizations can be useful for solving <m>A\vec{x} = \vec{b}</m>, or for understanding the properties of a matrix. In this section, we factor a matrix into <term>lower</term> and <term>upper</term> triangular matrices.
+    </p>
+  </subsection>
+
+  <subsection xml:id="subsec-triangular-matrices">
+    <title>Triangular Matrices</title>
+    <p>
+      Rectangular matrix <m>A</m> is <term>upper triangular</term> if <m>a_{i,j} = 0</m> for <m>i \gt j</m>. Examples:
+    </p>
+    <me>
+      \begin{pmatrix} 1 \amp 5 \amp 0 \\ 0 \amp 2 \amp 4 \end{pmatrix}, \quad
+      \begin{pmatrix}
+        1 \amp 0 \amp 0 \amp 1 \\
+        0 \amp 2 \amp 1 \amp 0 \\
+        0 \amp 0 \amp 0 \amp 0 \\
+        0 \amp 0 \amp 0 \amp 1
+      \end{pmatrix}, \quad
+      \begin{pmatrix} 2 \amp 1 \\ 0 \amp 1 \\ 0 \amp 0 \\ 0 \amp 0 \end{pmatrix}
+    </me>
+    <p>
+      Rectangular matrix <m>A</m> is <term>lower triangular</term> if <m>a_{i,j} = 0</m> for <m>i \lt j</m>. Examples:
+    </p>
+    <me>
+      \begin{pmatrix} 1 \amp 0 \amp 0 \\ 3 \amp 2 \amp 0 \end{pmatrix}, \quad
+      \begin{pmatrix}
+        3 \amp 0 \amp 0 \amp 0 \\
+        1 \amp 1 \amp 0 \amp 0 \\
+        0 \amp 0 \amp 0 \amp 0 \\
+        0 \amp 2 \amp 0 \amp 1
+      \end{pmatrix}, \quad
+      \begin{pmatrix} 1 \amp 0 \\ 1 \amp 4 \\ 0 \amp 1 \\ 2 \amp 0 \end{pmatrix}
+    </me>
+    <p>
+      Can you name a matrix that is both upper and lower triangular?
+    </p>
+  </subsection>
+
+  <subsection xml:id="subsec-lu-factorization">
+    <title>The LU Factorization</title>
+
+    <theorem xml:id="thm-lu-factorization">
+      <title>LU Factorization</title>
+      <statement>
+        <p>
+          If <m>A</m> is an <m>m \times n</m> matrix that can be row reduced to echelon form without row exchanges, then <m>A = LU</m>. <m>L</m> is a lower triangular <m>m \times m</m> matrix with 1's on the diagonal, and <m>U</m> is an <term>echelon</term> form of <m>A</m>.
+        </p>
+      </statement>
+    </theorem>
+
+    <example xml:id="ex-lu-shape">
+      <title>Shape of the LU Factorization</title>
+      <p>
+        If <m>A \in \mathbb{R}^{3 \times 2}</m>, the LU factorization has the form:
+      </p>
+      <me>
+        A = LU =
+        \begin{pmatrix} 1 \amp 0 \amp 0 \\ * \amp 1 \amp 0 \\ * \amp * \amp 1 \end{pmatrix}
+        \begin{pmatrix} * \amp * \\ 0 \amp * \\ 0 \amp 0 \end{pmatrix}
+      </me>
+    </example>
+  </subsection>
+
+  <subsection xml:id="subsec-solving-with-lu">
+    <title>Using the LU Decomposition to Solve a Linear System</title>
+    <p>
+      <alert>Goal:</alert> given rectangular matrix <m>A</m> and vector <m>\vec{b}</m>, we wish to solve <m>A\vec{x} = \vec{b}</m> for <m>\vec{x}</m>.
+    </p>
+
+    <algorithm xml:id="alg-lu-solve">
+      <title>Solving <m>A\vec{x} = \vec{b}</m> via LU Decomposition</title>
+      <p>To solve <m>A\vec{x} = \vec{b}</m> for <m>\vec{x}</m>:</p>
+      <ol>
+        <li><p>Construct the LU decomposition of <m>A</m> to obtain <m>L</m> and <m>U</m>.</p></li>
+        <li><p>Set <m>U\vec{x} = \vec{y}</m>. Forward solve for <m>\vec{y}</m> in <m>L\vec{y} = \vec{b}</m>.</p></li>
+        <li><p>Backwards solve for <m>\vec{x}</m> in <m>U\vec{x} = \vec{y}</m>.</p></li>
+      </ol>
+    </algorithm>
+
+    <example xml:id="ex-lu-solve">
+      <title>Solving a Linear System Given <m>A = LU</m></title>
+      <p>
+        Solve the linear system <m>A\vec{x} = \vec{b}</m>, given the LU decomposition of <m>A</m>:
+      </p>
+      <me>
+        A = LU =
+        \begin{pmatrix}
+          1 \amp 0 \amp 0 \amp 0 \\
+          1 \amp 1 \amp 0 \amp 0 \\
+          0 \amp 2 \amp 1 \amp 0 \\
+          0 \amp 0 \amp 1 \amp 1
+        \end{pmatrix}
+        \begin{pmatrix}
+          1 \amp 0 \amp 0 \\
+          0 \amp 2 \amp 1 \\
+          0 \amp 0 \amp 2 \\
+          0 \amp 0 \amp 0
+        \end{pmatrix}, \quad
+        \vec{b} =
+        \begin{pmatrix} 2 \\ 3 \\ 2 \\ 0 \end{pmatrix}
+      </me>
+    </example>
+  </subsection>
+
+  <summary xml:id="summary-lu-factorization">
+    <title>Summary</title>
+    <p>We explored the following concepts in this video:</p>
+    <ul>
+      <li><p>triangular matrices</p></li>
+      <li><p>using the LU factorization to solve linear systems</p></li>
+    </ul>
+    <p>
+      To solve <m>A\vec{x} = LU\vec{x} = \vec{b}</m>, we follow this process:
+    </p>
+    <ol>
+      <li><p>construct the LU factorization</p></li>
+      <li><p>forward solve for <m>\vec{y}</m> in <m>L\vec{y} = \vec{b}</m></p></li>
+      <li><p>backwards solve for <m>\vec{x}</m> in <m>U\vec{x} = \vec{y}</m></p></li>
+    </ol>
+  </summary>
+
+</section>

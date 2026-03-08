@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<section xml:id="sec-partitioned-matrices">
+  <title>Module 2: Partitioned Matrices and the Matrix Inverse</title>
+
+  <introduction>
+    <objectives>
+      <title>Topics and Objectives</title>
+      <p>Topics: We will explore the following concepts in this video:</p>
+      <ul>
+        <li><p>partitioned matrices (or block matrices)</p></li>
+        <li><p>expressions for the inverse of a partitioned matrix</p></li>
+      </ul>
+      <p>Objectives: Students should be able to do the following after watching this video:</p>
+      <ul>
+        <li><p>apply partitioned matrices to solve problems regarding matrix invertibility</p></li>
+      </ul>
+    </objectives>
+  </introduction>
+
+  <subsection xml:id="subsec-block-multiplication-method">
+    <title>The Row Column Method for Block Matrices</title>
+    <p>
+      Partitioned matrices can be multiplied using this method, as if each block were a scalar (provided each block has appropriate dimensions so that products are defined).
+    </p>
+    <p>
+      How might we use this approach to determine an expression for the inverse of a matrix?
+    </p>
+  </subsection>
+
+  
+
+  <subsection xml:id="subsec-constructing-block-inverse">
+    <title>Using the Row Column Method to Construct an Inverse</title>
+    <p>
+      Recall, using our formula for a <m>2 \times 2</m> matrix:
+      <me>\begin{pmatrix} a \amp b \\ 0 \amp c \end{pmatrix}^{-1} = \frac{1}{ac} \begin{pmatrix} c \amp -b \\ 0 \amp a \end{pmatrix}</me>
+    </p>
+
+    <exercise xml:id="ex-block-inverse-derivation">
+      <title>Example</title>
+      <statement>
+        <p>
+          Suppose <m>A \in \mathbb{R}^{n \times n}</m>, <m>B \in \mathbb{R}^{n \times n}</m>, and <m>C \in \mathbb{R}^{n \times n}</m> are invertible matrices. Construct the inverse of:
+          <me>\begin{pmatrix} A \amp B \\ 0 \amp C \end{pmatrix}</me>
+        </p>
+      </statement>
+      <solution>
+        <p>
+          Using the block Row-Column method, we look for a matrix <m>\begin{pmatrix} X \amp Y \\ Z \amp W \end{pmatrix}</m> such that:
+          <me>\begin{pmatrix} A \amp B \\ 0 \amp C \end{pmatrix} \begin{pmatrix} X \amp Y \\ Z \amp W \end{pmatrix} = \begin{pmatrix} I \amp 0 \\ 0 \amp I \end{pmatrix}</me>
+          Solving the resulting block equations allows us to express the inverse in terms of <m>A^{-1}</m>, <m>B</m>, and <m>C^{-1}</m>.
+        </p>
+      </solution>
+    </exercise>
+  </subsection>
+
+  <summary xml:id="summary-partitioned">
+    <title>Summary</title>
+    <p>
+      We explored the following concepts in this video:
+    </p>
+    <ul>
+      <li><p>using partitioned matrices to solve problems regarding matrix invertibility and matrix multiplication</p></li>
+    </ul>
+    <p>
+      Although not part of our course, matrix partitioning is often used to help derive new algorithms because they give a more concise representation of a matrix and of operations on matrices.
+    </p>
+  </summary>
+</section>

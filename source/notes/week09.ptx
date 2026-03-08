@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<section xml:id="sec-partitioned-matrices-complete">
+  <title>Module 2: Partitioned Matrices and Matrix Multiplication</title>
+
+  <introduction>
+    <objectives>
+      <title>Topics and Objectives</title>
+      <p>Topics: We will explore the following concepts in this section.</p>
+      <ul>
+        <li><p>partitioned matrices (or block matrices)</p></li>
+        <li><p>matrix multiplication with partitioned matrices</p></li>
+      </ul>
+      <p>Objectives: After this section, students should be able to apply partitioned matrices to solve problems regarding matrix multiplication.</p>
+    </objectives>
+
+    <p><term>Multiple Perspectives</term></p>
+    <blockquote cite="William Paul Thurston">
+      <p>
+        <q>Mathematics is not about numbers, equations, computations, or algorithms. Mathematics is about understanding.</q>
+      </p>
+      <attribution>William Paul Thurston</attribution>
+    </blockquote>
+    <p>
+      Multiple perspectives of the same concept is a theme of this course; each perspective deepens our understanding. In this section, we explore another way of representing matrices and their algebra that gives us another way of thinking about them.
+    </p>
+  </introduction>
+
+  <subsection xml:id="subsec-defining-partitions">
+    <title>What is a Partitioned Matrix?</title>
+    <p>
+      A partitioned matrix is a matrix that has been "sliced" into smaller sub-matrices. For example:
+      <me>
+        A = \begin{pmatrix} 
+        3 \amp 1 \amp 4 \amp 1 \amp 0 \\ 
+        1 \amp 6 \amp 1 \amp 0 \amp 1 \\ 
+        0 \amp 0 \amp 0 \amp 4 \amp 2 
+        \end{pmatrix}
+      </me>
+      can also be written as a block matrix by choosing a specific partition:
+      <me>
+        A = \left( \begin{array}{ccc|cc}
+        3 \amp 1 \amp 4 \amp 1 \amp 0 \\
+        1 \amp 6 \amp 1 \amp 0 \amp 1 \\
+        \hline
+        0 \amp 0 \amp 0 \amp 4 \amp 2
+        \end{array} \right) = \begin{pmatrix} A_{1,1} \amp A_{1,2} \\ A_{2,1} \amp A_{2,2} \end{pmatrix}
+      </me>
+    </p>
+    <p>
+      In this example, we partitioned the matrix into four blocks, each having different dimensions.
+    </p>
+  </subsection>
+  
+  
+
+  <subsection xml:id="subsec-utility-and-shorthand">
+    <title>Why are Partitioned Matrices Useful?</title>
+    <p>
+      Partitioned matrices allow for a succinct representation of large, sparse, or structured matrices. For instance, a matrix in row-reduced form often looks like this:
+      <me>
+        \begin{pmatrix}
+        1 \amp 0 \amp 0 \amp * \amp \dots \amp * \\
+        0 \amp 1 \amp 0 \amp * \amp \dots \amp * \\
+        0 \amp 0 \amp 1 \amp * \amp \dots \amp * \\
+        0 \amp 0 \amp 0 \amp 0 \amp \dots \amp 0 \\
+        0 \amp 0 \amp 0 \amp 0 \amp \dots \amp 0 
+        \end{pmatrix} = \begin{pmatrix} I_3 \amp F \\ 0 \amp 0 \end{pmatrix}
+      </me>
+    </p>
+    <p>
+      This shorthand is specifically useful when we begin studying the <term>null space</term> of a matrix <m>A</m> later in the semester.
+    </p>
+  </subsection>
+
+  <subsection xml:id="subsec-row-column-method">
+    <title>Recall: The Row-Column Method</title>
+    <p>
+      Recall the standard row-column method for matrix multiplication:
+    </p>
+    <theorem xml:id="thm-row-column-standard">
+      <statement>
+        <p>
+          Let <m>A</m> be an <m>m \times n</m> matrix and <m>B</m> be an <m>n \times p</m> matrix. Then, the <m>(i, j)</m> entry of <m>AB</m> is the dot product of the <m>i</m>-th row of <m>A</m> and the <m>j</m>-th column of <m>B</m>:
+          <me>(AB)_{ij} = \text{row}_i(A) \cdot \text{col}_j(B)</me>
+        </p>
+      </statement>
+    </theorem>
+
+    <exercise xml:id="ex-row-column-simple">
+      <title>Example</title>
+      <statement>
+        <p>
+          Compute the following product:
+          <me>
+            AB = \begin{pmatrix} 1 \amp 0 \amp 1 \\ 0 \amp 1 \amp 1 \end{pmatrix} 
+            \begin{pmatrix} 2 \amp -1 \\ 0 \amp -1 \\ 0 \amp 1 \end{pmatrix}
+          </me>
+        </p>
+      </statement>
+      <solution>
+        <me>
+          AB = \begin{pmatrix} (1)(2)+(0)(0)+(1)(0) \amp (1)(-1)+(0)(-1)+(1)(1) \\ (0)(2)+(1)(0)+(1)(0) \amp (0)(-1)+(1)(-1)+(1)(1) \end{pmatrix} = \begin{pmatrix} 2 \amp 0 \\ 0 \amp 0 \end{pmatrix}
+        </me>
+      </solution>
+    </exercise>
+  </subsection>
+
+  <subsection xml:id="subsec-block-row-column">
+    <title>The Row-Column Method for Block Matrices</title>
+    <p>
+      Partitioned matrices can be multiplied using this same method, as if each block were a scalar, provided each block has appropriate dimensions so that products are defined.
+    </p>
+
+    <exercise xml:id="ex-symbolic-partition">
+      <title>Example: Symbolic Block Multiplication</title>
+      <statement>
+        <p>
+          Compute the matrix product using the given partitioning:
+          <me>
+            AB = \left(\begin{array}{cc|c} 1 \amp 0 \amp 1 \\ 0 \amp 1 \amp 1 \end{array}\right) 
+            \left(\begin{array}{cc} 2 \amp -1 \\ 0 \amp -1 \\ \hline 0 \amp 1 \end{array}\right) = \begin{pmatrix} I_2 \amp X \end{pmatrix} \begin{pmatrix} U \\ Y \end{pmatrix}
+          </me>
+          Where:
+          <me>X = \begin{pmatrix} 1 \\ 1 \end{pmatrix}, \quad U = \begin{pmatrix} 2 \amp -1 \\ 0 \amp -1 \end{pmatrix}, \quad Y = \begin{pmatrix} 0 \amp 1 \end{pmatrix}</me>
+        </p>
+      </statement>
+      <solution>
+        <p>
+          Using the row-column method on the blocks:
+          <me>AB = (I_2)(U) + (X)(Y)</me>
+          <me>
+            AB = \begin{pmatrix} 2 \amp -1 \\ 0 \amp -1 \end{pmatrix} + \begin{pmatrix} 1 \\ 1 \end{pmatrix} \begin{pmatrix} 0 \amp 1 \end{pmatrix}
+          </me>
+          <me>
+            AB = \begin{pmatrix} 2 \amp -1 \\ 0 \amp -1 \end{pmatrix} + \begin{pmatrix} 0 \amp 1 \\ 0 \amp 1 \end{pmatrix} = \begin{pmatrix} 2 \amp 0 \\ 0 \amp 0 \end{pmatrix}
+          </me>
+        </p>
+      </solution>
+    </exercise>
+    
+  </subsection>
+
+  <subsection xml:id="summary-partitioned-matrices">
+    <title>Summary</title>
+    <p>
+      We explored the following concepts in this video:
+    </p>
+    <ul>
+      <li>
+        <p>Using partitioned matrices to solve problems regarding matrix multiplication.</p>
+      </li>
+    </ul>
+    <p>
+      *Although not part of our course, matrix partitioning is often used to help derive new algorithms because they give a more concise representation of a matrix and of operations on matrices.*
+    </p>
+  </subsection>
+</section>
