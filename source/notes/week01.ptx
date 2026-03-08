@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<section xml:id="notes-week-01">
+  <title>Module 2: Matrix Addition and Scalar Multiplication</title>
+
+<objectives>
+    <introduction>
+      <p>We will explore the following concepts in this section:</p>
+      <ul>
+        <li><p>identity and zero matrices</p></li>
+        <li><p>matrix algebra: sums and scalar multiplies</p></li>
+      </ul>
+    </introduction>
+    <ul>
+      <li>
+        <p>
+          Apply matrix algebra and the zero and identity matrices to solve and analyze matrix equations.
+        </p>
+      </li>
+    </ul>
+  </objectives>
+
+  <subsection xml:id="subsec-zero-identity-definitions">
+    <title>Definitions: Zero and Identity Matrices</title>
+    
+    <definition xml:id="def-zero-matrix">
+      <statement>
+        <p>
+          A <term>zero matrix</term> is any matrix whose every entry is zero.
+        </p>
+        <p>
+          <me>
+            0_{2 \times 3} = \begin{pmatrix} 0 \amp 0 \amp 0 \\ 0 \amp 0 \amp 0 \end{pmatrix}, \quad 
+            0_{2 \times 1} = \begin{pmatrix} 0 \\ 0 \end{pmatrix}
+          </me>
+        </p>
+      </statement>
+    </definition>
+  </subsection>
+<subsection xml:id="subsec-identity-and-square">
+    <title>Identity Matrices and Square Matrices</title>
+    <p>
+      <ul>
+        <li>
+          <p>
+            The <m>n \times n</m> <term>identity matrix</term> has ones on the main diagonal, otherwise all zeros.
+          </p>
+          <me>
+            I_2 = \begin{pmatrix} 1 \amp 0 \\ 0 \amp 1 \end{pmatrix}, \quad 
+            I_3 = \begin{pmatrix} 1 \amp 0 \amp 0 \\ 0 \amp 1 \amp 0 \\ 0 \amp 0 \amp 1 \end{pmatrix}
+          </me>
+        </li>
+      </ul>
+    </p>
+    <note>
+      <p>
+        Any matrix with dimensions <m>n \times n</m> is <term>square</term>. Zero matrices need not be square, but identity matrices must be square.
+      </p>
+    </note>
+  </subsection>
+
+  <subsection xml:id="subsec-matrix-algebra">
+    <title>Matrix Addition and Scalar Multiples</title>
+    <p>
+      Suppose <m>A</m> and <m>B</m> are <m>m \times n</m> matrices. <m>a_{i,j}</m> is the entry of <m>A</m> in row <m>i</m> and column <m>j</m>, and <m>b_{i,j}</m> is the entry of <m>B</m> in row <m>i</m> and column <m>j</m>.
+    </p>
+    <ul>
+      <li><p>The entries of <m>A + B</m> are <m>a_{i,j} + b_{i,j}</m>.</p></li>
+      <li><p>If <m>c \in \mathbb{R}</m>, then the entries of <m>cA</m> are <m>ca_{i,j}</m>.</p></li>
+    </ul>
+
+    <exercise xml:id="ex-matrix-algebra-solve">
+      <title>Example: Solving for Unknowns</title>
+      <statement>
+        <p>
+          If <me>\begin{pmatrix} 1 \amp 2 \amp 3 \\ 4 \amp 5 \amp 6 \end{pmatrix} + c \begin{pmatrix} 7 \amp 4 \amp 7 \\ 0 \amp 0 \amp k \end{pmatrix} = \begin{pmatrix} 15 \amp 10 \amp 17 \\ 4 \amp 5 \amp 16 \end{pmatrix}</me>
+          What are the values of <m>c</m> and <m>k</m>?
+        </p>
+      </statement>
+      <answer>
+        <p>
+          <m>c = 2</m> and <m>k = 5</m>
+        </p>
+      </answer>
+      <solution>
+        <p>
+          Looking at the first entry: <m>1 + 7c = 15 \implies 7c = 14 \implies c = 2</m>.
+        </p>
+        <p>
+          Looking at the last entry: <m>6 + ck = 16 \implies 6 + 2k = 16 \implies 2k = 10 \implies k = 5</m>.
+        </p>
+      </solution>
+    </exercise>
+  </subsection>
+
+  <subsection xml:id="subsec-matrix-properties">
+    <title>Properties of Sums and Scalar Multiples</title>
+    <p>
+      Scalar multiples and matrix addition have the expected properties. If <m>r, s \in \mathbb{R}</m> are scalars, and <m>A, B, C</m> are <m>m \times n</m> matrices, then:
+    </p>
+    <p>
+      <ol>
+        <li><p><m>A + 0_{m \times n} = A</m></p></li>
+        <li><p><m>(A + B) + C = A + (B + C)</m></p></li>
+        <li><p><m>r(A + B) = rA + rB</m></p></li>
+        <li><p><m>(r + s)A = rA + sA</m></p></li>
+        <li><p><m>r(sA) = (rs)A</m></p></li>
+      </ol>
+    </p>
+  </subsection>
+
+  <summary>
+    <p>We explored the following concepts:</p>
+    <ul>
+      <li><p>the identity and zero matrices</p></li>
+      <li><p>matrix algebra: sums and scalar multiplies</p></li>
+    </ul>
+  </summary>
+
+</section>

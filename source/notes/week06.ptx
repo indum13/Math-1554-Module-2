@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<section xml:id="notes-inverse-n-by-n">
+  <title>Module 2: The Inverse of an <m>n \times n</m> Matrix</title>
+
+  <introduction>
+    <objectives>
+      <title>Topics and Objectives</title>
+      <p>We will explore the following concepts in this section:</p>
+      <ul>
+        <li><p>an algorithm for computing the inverse of a square matrix</p></li>
+      </ul>
+      <p>Objectives: Students should be able to compute the inverse of an <m>n \times n</m> matrix and use it to solve linear systems.</p>
+    </objectives>
+
+    <theorem xml:id="thm-unique-solution-inverse">
+      <statement>
+        <p>
+          <m>A \in \mathbb{R}^{n \times n}</m> has an inverse if and only if for all <m>\vec{b} \in \mathbb{R}^n</m>, <m>A\vec{x} = \vec{b}</m> has a unique solution. And, in this case, <m>\vec{x} = A^{-1}\vec{b}</m>.
+        </p>
+      </statement>
+    </theorem>
+    <p>
+      This theorem gives us a method for solving linear systems with <m>n</m> equations and <m>n</m> variables. But how do we construct the inverse of an <m>n \times n</m> matrix?
+    </p>
+  </introduction>
+
+  <subsection xml:id="subsec-inverse-algorithm">
+    <title>An Algorithm for Computing <m>A^{-1}</m></title>
+    <p>
+      Suppose <m>A \in \mathbb{R}^{n \times n}</m>. We can use the following algorithm to compute <m>A^{-1}</m>:
+    </p>
+    <p>
+      <ol>
+        <li><p>Row reduce the augmented matrix <m>(A | I_n)</m> to RREF.</p></li>
+        <li><p>If reduction has the form <m>(I_n | B)</m>, then <m>A</m> is invertible and <m>B = A^{-1}</m>. Otherwise, <m>A</m> is not invertible.</p></li>
+      </ol>
+    </p>
+
+    <exercise>
+      <title>Example: Compute an Inverse</title>
+      <statement>
+        <p>Compute the inverse of <m>A = \begin{pmatrix} 0 \amp 1 \amp 2 \\ 1 \amp 0 \amp 3 \\ 0 \amp 0 \amp 1 \end{pmatrix}</m>.</p>
+      </statement>
+      <solution>
+        <p>
+          Augment with the identity and row reduce:
+          <me>(A | I_3) = \left(\begin{array}{ccc|ccc} 0 \amp 1 \amp 2 \amp 1 \amp 0 \amp 0 \\ 1 \amp 0 \amp 3 \amp 0 \amp 1 \amp 0 \\ 0 \amp 0 \amp 1 \amp 0 \amp 0 \amp 1 \end{array}\right)</me>
+          <me>\dots \to \left(\begin{array}{ccc|ccc} 1 \amp 0 \amp 0 \amp 0 \amp 1 \amp -3 \\ 0 \amp 1 \amp 0 \amp 1 \amp 0 \amp -2 \\ 0 \amp 0 \amp 1 \amp 0 \amp 0 \amp 1 \end{array}\right)</me>
+          So <m>A^{-1} = \begin{pmatrix} 0 \amp 1 \amp -3 \\ 1 \amp 0 \amp -2 \\ 0 \amp 0 \amp 1 \end{pmatrix}</m>.
+        </p>
+      </solution>
+    </exercise>
+  </subsection>
+
+  <subsection xml:id="subsec-why-algorithm-works">
+    <title>Why Does This Algorithm Work?</title>
+    <p>
+      Suppose <m>A</m> is a <m>3 \times 3</m> matrix and <m>A^{-1} = (\vec{x}_1 \vec{x}_2 \vec{x}_3)</m>. The first column of <m>A^{-1}</m> is <m>\vec{x}_1 = A^{-1}\vec{e}_1</m>.
+    </p>
+    <p>
+      This implies <m>A\vec{x}_1 = \vec{e}_1</m>, or <m>(A | \vec{e}_1)</m>. Thus:
+      <ul>
+        <li><p>If we row reduce to RREF, we obtain the first column of the inverse, <m>\vec{x}_1</m>.</p></li>
+        <li><p>Each column of <m>A^{-1}</m> is found by reducing <m>A\vec{x}_i = \vec{e}_i</m>.</p></li>
+      </ul>
+    </p>
+    <p>
+      We can think of our algorithm as simultaneously solving <m>n</m> linear systems:
+      <me>A\vec{x}_1 = \vec{e}_1, A\vec{x}_2 = \vec{e}_2, \dots, A\vec{x}_n = \vec{e}_n</me>
+    </p>
+    <p>
+      Another perspective on constructing <m>A^{-1}</m> uses <term>elementary matrices</term>.
+    </p>
+  </subsection>
+
+  <summary>
+  <p>
+    We explored a method for constructing the inverse of an <m>n \times n</m> matrix, <m>A^{-1}</m>, that could be used to solve a linear system.
+  </p>
+  <p>
+    Our algorithm will have limitations but the concept of a matrix inverse is something that is widely used in applications of linear algebra, even if it is not used in practice.
+  </p>
+</summary>
+</section>

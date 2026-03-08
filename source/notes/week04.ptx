@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<section xml:id="notes-week-03-part2">
+  <title>Module 2: The Transpose and Matrix Powers</title>
+  
+  <introduction>
+    <objectives>
+      <title>Topics and Objectives</title>
+      <p>We will explore the following concepts in this section:</p>
+      <ul>
+        <li><p>the transpose of a matrix</p></li>
+        <li><p>matrix powers</p></li>
+        <li>
+            <p>apply the matrix transpose and matrix powers to solve and analyze matrix equations</p>
+        </li>
+      </ul>
+      <p>Objectives: Students should be able to apply the matrix transpose and matrix powers to solve and analyze matrix equations.</p>
+    </objectives>
+  </introduction>
+
+  <subsection xml:id="subsec-matrix-transpose">
+    <title>The Transpose of a Matrix</title>
+    <p>
+      <m>A^T</m> is the matrix whose columns are the rows of <m>A</m>.
+    </p>
+
+    <exercise xml:id="ex-transpose-compute">
+      <title>Example: Computing a Transpose</title>
+      <statement>
+        <p>
+          Compute <me>\begin{pmatrix} 1 \amp 2 \amp 3 \amp 4 \\ 0 \amp 1 \amp 0 \amp 2 \end{pmatrix}^T</me>
+        </p>
+      </statement>
+      <solution>
+        <me>\begin{pmatrix} 1 \amp 0 \\ 2 \amp 1 \\ 3 \amp 0 \\ 4 \amp 2 \end{pmatrix}</me>
+      </solution>
+    </exercise>
+
+    <assemblage xml:id="properties-transpose">
+      <title>Properties of the Matrix Transpose</title>
+      <p>
+        <ol>
+          <li><p><m>(A^T)^T = A</m></p></li>
+          <li><p><m>(A + B)^T = A^T + B^T</m></p></li>
+          <li><p><m>(rA)^T = rA^T</m></p></li>
+          <li><p><m>(AB)^T = B^T A^T</m></p></li>
+        </ol>
+      </p>
+    </assemblage>
+  </subsection>
+
+  <subsection xml:id="subsec-matrix-powers">
+    <title>Matrix Powers</title>
+    <p>
+      For an <m>n \times n</m> matrix and positive integer <m>k</m>, <m>A^k</m> is the product of <m>k</m> copies of <m>A</m>:
+      <me>A^k = AA \dots A</me>
+    </p>
+
+    <exercise xml:id="ex-matrix-power">
+      <title>Example: Compute <m>C^2</m></title>
+      <statement>
+        <p>
+          Let <m>C = \begin{pmatrix} 1 \amp 2 \\ 0 \amp 1 \end{pmatrix}</m>. Compute <m>C^2</m>.
+        </p>
+      </statement>
+      <solution>
+        <p>
+          <me>C^2 = \begin{pmatrix} 1 \amp 2 \\ 0 \amp 1 \end{pmatrix} \begin{pmatrix} 1 \amp 2 \\ 0 \amp 1 \end{pmatrix} = \begin{pmatrix} 1 \amp 4 \\ 0 \amp 1 \end{pmatrix}</me>
+        </p>
+      </solution>
+    </exercise>
+  </subsection>
+
+  <subsection xml:id="subsec-comprehensive-example">
+    <title>Dimension Analysis Example</title>
+    <exercise>
+      <statement>
+        <p>Define:</p>
+        <me>
+          A = \begin{pmatrix} 1 \amp 0 \\ 0 \amp 0 \end{pmatrix}, \quad 
+          B = \begin{pmatrix} 1 \amp 0 \amp 0 \\ 0 \amp 0 \amp 8 \end{pmatrix}, \quad 
+          C = \begin{pmatrix} 1 \amp 0 \amp 0 \\ 0 \amp 2 \amp 0 \\ 0 \amp 0 \amp 2 \end{pmatrix}
+        </me>
+        <p>Which of these operations are defined, and what are the dimensions of the result?</p>
+        <p>
+          <ol label="1">
+            <li><p><m>A + 3C^2</m></p></li>
+            <li><p><m>A(AB)^T</m></p></li>
+            <li><p><m>A + ABCB^T</m></p></li>
+          </ol>
+        </p>
+      </statement>
+      <solution>
+        <p>
+          <ol label="1">
+            <li><p>Undefined. <m>A</m> is <m>2 \times 2</m> while <m>C</m> is <m>3 \times 3</m>.</p></li>
+            <li><p>Defined. Result is <m>2 \times 3</m>.</p></li>
+            <li><p>Defined. Result is <m>2 \times 2</m>.</p></li>
+          </ol>
+        </p>
+      </solution>
+    </exercise>
+  </subsection>
+
+  <summary>
+    <p>
+      In this section, we used the matrix transpose and matrix powers to solve and analyze equations. We can now determine whether a particular expression involving matrices is defined and what the resulting dimensions will be.
+    </p>
+  </summary>
+</section>

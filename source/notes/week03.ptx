@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<section xml:id="notes-week-03">
+  <title>Module 2: Matrix Multiplication Continued</title>
+  
+<introduction>
+    <p>
+      This section covers topics for the third week of class.
+    </p>
+
+    <objectives>
+      <title>Topics and Objectives</title>
+      <p>We will explore the following concepts:</p>
+      <ul>
+        <li><p>matrix multiplication</p></li>
+      </ul>
+      <p>Objectives: After watching this video, students should be able to:</p>
+      <ul>
+        <li><p>apply matrix algebra and the zero and identity matrices to solve and analyze matrix equations</p></li>
+      </ul>
+    </objectives>
+
+    <p>
+      The dimensions of <m>A</m> and <m>B</m> determine whether <m>AB</m> is defined, and what its dimensions will be.
+    </p>
+
+    <figure xml:id="matrix1">
+      <caption>Matrix Dimensions &amp; Matrix Multiplication</caption>
+      <image source="matrixss1.png" width="40%">
+        <description>Diagram showing that the inner dimensions (columns of A and rows of B) must be equal for the product to be defined.</description>
+      </image>
+    </figure>
+    
+  </introduction>
+
+  <subsection xml:id="subsec-mult-properties">
+    <title>Properties of Matrix Multiplication</title>
+    <p>
+      Let <m>A, B, C</m> be matrices of appropriate sizes, and <m>A</m> be an <m>m \times n</m> matrix.
+    </p>
+    <p>
+      <ol>
+        <li><p><term>Associative:</term> <m>(AB)C = A(BC)</m></p></li>
+        <li><p><term>Left Distributive:</term> <m>A(B + C) = AB + AC</m></p></li>
+        <li><p><term>Right Distributive:</term> <m>(A + B)C = AC + BC</m></p></li>
+        <li><p><term>Identity:</term> <m>I_m A = A = A I_n</m></p></li>
+      </ol>
+    </p>
+
+    <warning>
+      <title>Common Pitfalls</title>
+      <ul>
+        <li><p><term>Non-commutative:</term> In general, <m>AB \neq BA</m>.</p></li>
+        <li><p><term>Non-cancellation:</term> <m>AB = AC</m> does not mean <m>B = C</m>.</p></li>
+        <li><p><term>Zero Divisors:</term> <m>AB = 0</m> does not mean <m>A=0</m> or <m>B=0</m>.</p></li>
+      </ul>
+    </warning>
+  </subsection>
+
+  <subsection xml:id="subsec-associative-composition">
+    <title>The Associative Property &amp; Composition</title>
+    <p>
+      If <m>C = \vec{x}</m>, then the associative property is <m>(AB)\vec{x} = A(B\vec{x})</m>.
+    </p>
+    <p>
+      Matrix multiplication corresponds to the <term>composition of linear transformations</term>.
+    </p>
+    <figure xml:id="matrix2">
+      <caption>Matrix Multiplication</caption>
+      <image source="m2w3image.png" width="50%">
+        <description>Diagram representing the associate property.</description>
+      </image>
+    </figure>
+
+    
+  </subsection>
+
+  <subsection xml:id="subsec-week3-examples">
+    <title>Practice Problems</title>
+    <exercise>
+      <statement>
+        <p>
+          Suppose <m>A = \begin{pmatrix} 1 \amp 0 \\ 0 \amp 0 \end{pmatrix}</m>. Give an example of a <m>2 \times 2</m> matrix that does not commute with <m>A</m>.
+        </p>
+      </statement>
+      <solution>
+        <p>
+          Consider <m>B = \begin{pmatrix} 0 \amp 1 \\ 1 \amp 0 \end{pmatrix}</m>. We find that <m>AB \neq BA</m>.
+        </p>
+      </solution>
+    </exercise>
+  </subsection>
+
+</section>

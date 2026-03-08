@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<section xml:id="notes-week-02">
+  <title>Module 2: Matrix Multiplication</title>
+<objectives>
+      <introduction>
+        <p>We will explore the following concepts in this video:</p>
+        <ul>
+          <li><p>matrix multiplication</p></li>
+        </ul>
+      </introduction>
+      <ul>
+        <li>
+          <p>
+            Apply matrix algebra and the zero and identity matrices to solve and analyze matrix equations.
+          </p>
+        </li>
+      </ul>
+    </objectives>
+
+    <subsection xml:id="subsec-multiplication-definition">
+      <title>Matrix Multiplication</title>
+      
+      <definition xml:id="def-matrix-product">
+        <statement>
+          <p>
+            Let <m>A</m> be an <m>m \times n</m> matrix, and <m>B</m> be an <m>n \times p</m> matrix. The product <m>AB</m> is an <m>m \times p</m> matrix, equal to:
+            <me>
+              AB = A \begin{pmatrix} \vec{b}_1 \amp \cdots \amp \vec{b}_p \end{pmatrix} = \begin{pmatrix} A\vec{b}_1 \amp \cdots \amp A\vec{b}_p \end{pmatrix}
+            </me>
+          </p>
+        </statement>
+      </definition>
+
+      <exercise xml:id="ex-compute-product-1">
+        <title>Example: Computing a Product</title>
+        <statement>
+          <p>
+            Compute the following product:
+            <me>
+              C = AB = \begin{pmatrix} 2 \amp 0 \\ 1 \amp 1 \end{pmatrix} \begin{pmatrix} 2 \amp 0 \amp 0 \\ 3 \amp 4 \amp 0 \end{pmatrix}
+            </me>
+          </p>
+        </statement>
+        <answer>
+          <p>
+            <me>\begin{pmatrix} 4 \amp 0 \amp 0 \\ 5 \amp 4 \amp 0 \end{pmatrix}</me>
+          </p>
+        </answer>
+        <solution>
+          <p>
+            Using the column definition:
+            <ul>
+              <li><p><m>A\vec{b}_1 = \begin{pmatrix} 2 \amp 0 \\ 1 \amp 1 \end{pmatrix} \begin{pmatrix} 2 \\ 3 \end{pmatrix} = \begin{pmatrix} 4 \\ 5 \end{pmatrix}</m></p></li>
+              <li><p><m>A\vec{b}_2 = \begin{pmatrix} 2 \amp 0 \\ 1 \amp 1 \end{pmatrix} \begin{pmatrix} 0 \\ 4 \end{pmatrix} = \begin{pmatrix} 0 \\ 4 \end{pmatrix}</m></p></li>
+              <li><p><m>A\vec{b}_3 = \begin{pmatrix} 2 \amp 0 \\ 1 \amp 1 \end{pmatrix} \begin{pmatrix} 0 \\ 0 \end{pmatrix} = \begin{pmatrix} 0 \\ 0 \end{pmatrix}</m></p></li>
+            </ul>
+          </p>
+        </solution>
+      </exercise>
+    </subsection>
+
+    <subsection xml:id="subsec-row-column-rule">
+      <title>Row-Column Rule</title>
+      <p>
+        The Row-Column Rule is a convenient way to calculate the product <m>AB</m>.
+      </p>
+
+      <assemblage xml:id="rule-row-column">
+        <title>Row Column Method</title>
+        <p>
+          If <m>A \in \mathbb{R}^{m \times n}</m> has rows <m>\vec{a}_i</m>, and <m>B \in \mathbb{R}^{n \times p}</m> has columns <m>\vec{b}_j</m>, each element of the product <m>C = AB</m> is the dot product <m>c_{ij} = \vec{a}_i \cdot \vec{b}_j</m>.
+        </p>
+      </assemblage>
+
+      <exercise xml:id="ex-row-column-calc">
+        <title>Example: Row-Column Calculation</title>
+        <statement>
+          <p>
+            Compute the following using the row-column method:
+            <me>
+              C = AB = \begin{pmatrix} 2 \amp 0 \\ 1 \amp 1 \end{pmatrix} \begin{pmatrix} 2 \amp 0 \amp 0 \\ 3 \amp 4 \amp 0 \end{pmatrix}
+            </me>
+          </p>
+        </statement>
+        <answer>
+          <p><m>c_{11} = (2)(2) + (0)(3) = 4</m>, etc.</p>
+        </answer>
+      </exercise>
+    </subsection>
+
+    <summary>
+      <p>We explored the following concepts:</p>
+      <ul>
+        <li><p>the identity and zero matrices</p></li>
+        <li><p>matrix algebra: sums and products, scalar multiplies</p></li>
+      </ul>
+      <p>
+        There are several ways of multiplying matrices that we explore in this class. This video introduced two methods.
+      </p>
+    </summary>
+  
+</section>

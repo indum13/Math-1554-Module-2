@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<section xml:id="notes-elementary-matrices">
+  <title>Module 2: Elementary Matrices</title>
+
+  <introduction>
+    <objectives>
+      <title>Topics and Objectives</title>
+      <p>We will explore the following concepts in this section:</p>
+      <ul>
+        <li><p>the inverse of a matrix, its algebraic properties, and its relation to solving systems of linear equations</p></li>
+        <li><p>elementary matrices and their role in calculating the matrix inverse</p></li>
+      </ul>
+      <p>Objectives: After this section, students should be able to:</p>
+      <ul>
+        <li><p>apply the formal definition of an inverse and its algebraic properties to solve and analyze linear systems</p></li>
+        <li><p>construct elementary matrices and characterize row operations with them</p></li>
+      </ul>
+    </objectives>
+  </introduction>
+
+  <subsection xml:id="subsec-inverse-properties">
+    <title>Properties of the Matrix Inverse</title>
+    <p>
+      Assume <m>A</m> and <m>B</m> are invertible <m>n \times n</m> matrices. The following properties hold:
+      <ul>
+        <li><p><m>(A^{-1})^{-1} = A</m></p></li>
+        <li><p><m>(AB)^{-1} = B^{-1}A^{-1}</m> (Note: matrix multiplication is non-commutative!)</p></li>
+        <li><p><m>(A^T)^{-1} = (A^{-1})^T</m></p></li>
+      </ul>
+    </p>
+
+    <exercise>
+      <title>True or False</title>
+      <statement>
+        <p>True or false: <m>(ABC)^{-1} = C^{-1}B^{-1}A^{-1}</m>.</p>
+      </statement>
+      <solution>
+        <p>True. The inverse of a product of any number of invertible matrices is the product of their inverses in the reverse order.</p>
+      </solution>
+    </exercise>
+  </subsection>
+
+  <subsection xml:id="subsec-defining-elementary">
+    <title>Elementary Matrices</title>
+    <definition xml:id="def-elementary-matrix">
+      <statement>
+        <p>
+          An <term>elementary matrix</term>, <m>E</m>, is one that differs from <m>I_n</m> by exactly one row operation.
+        </p>
+        <p>
+          Recall our elementary row operations:
+          <ul>
+            <li><p>swap rows</p></li>
+            <li><p>multiply a row by a non-zero scalar</p></li>
+            <li><p>add a multiple of one row to another</p></li>
+          </ul>
+        </p>
+        <p>We can represent each operation by a matrix multiplication with an elementary matrix.</p>
+      </statement>
+    </definition>
+
+    <exercise>
+      <title>Identifying Elementary Matrices</title>
+      <statement>
+        <p>Suppose:
+          <me>E \begin{pmatrix} 1 \amp 1 \amp 1 \\ -2 \amp 1 \amp 0 \\ 0 \amp 0 \amp 1 \end{pmatrix} = \begin{pmatrix} 1 \amp 1 \amp 1 \\ 0 \amp 3 \amp 2 \\ 0 \amp 0 \amp 1 \end{pmatrix}</me>
+          By inspection, what is <m>E</m>? How does it compare to <m>I_3</m>?
+        </p>
+      </statement>
+    </exercise>
+  </subsection>
+
+  <subsection xml:id="subsec-elementary-inverse-connection">
+    <title>Connection to the Inversion Algorithm</title>
+    <p>
+      Returning to understanding why our algorithm works, we apply a sequence of row operations to <m>A</m> to obtain <m>I_n</m>:
+      <me>(E_k \dots E_3 E_2 E_1)A = I_n</me>
+      Thus, the product <m>E_k \dots E_3 E_2 E_1</m> is the inverse matrix we seek.
+    </p>
+
+    <theorem xml:id="thm-row-equivalence-invertibility">
+      <statement>
+        <p>
+          Matrix <m>A</m> is invertible if and only if it is row equivalent to the identity. 
+        </p>
+        <p>
+          In this case, any sequence of elementary row operations that transforms <m>A</m> into <m>I</m>, applied to <m>I</m>, generates <m>A^{-1}</m>.
+        </p>
+      </statement>
+    </theorem>
+  </subsection>
+
+  <subsection xml:id="subsec-practical-inverse">
+    <title>Using The Inverse to Solve a Linear System</title>
+    <p>
+      While we could use <m>A^{-1}</m> to solve a linear system <m>A\vec{x} = \vec{b}</m> by calculating <m>\vec{x} = A^{-1}\vec{b}</m>, it is seldom used in practice.
+    </p>
+
+    <note>
+      <p>
+        As our textbook points out, <m>A^{-1}</m> is rarely used because computing it:
+        <ul>
+          <li><p>can take a very long time</p></li>
+          <li><p>is prone to numerical error</p></li>
+        </ul>
+      </p>
+      <p>
+        A recurring theme of this course: just because we <alert>can</alert> do something a certain way, does not mean that we <alert>should</alert>.
+      </p>
+    </note>
+  </subsection>
+
+  <summary>
+    <p>We explored the following concepts in this section:</p>
+    <ul>
+      <li><p>elementary matrices and their relationship to row operations</p></li>
+      <li><p>properties of the matrix inverse</p></li>
+    </ul>
+    <p>Elementary matrices are used a few times throughout this course to describe the processes behind algorithms.</p>
+  </summary>
+</section>

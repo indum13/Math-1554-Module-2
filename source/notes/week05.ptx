@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<section xml:id="notes-matrix-inverse">
+  <title>Module 2: Inverse of a 2x2 Matrix</title>
+
+  <introduction>
+    <objectives>
+      <title>Topics and Objectives</title>
+      <p>We will explore the following concepts in this section:</p>
+      <ul>
+        <li><p>the inverse of a <m>2 \times 2</m> matrix</p></li>
+        <li><p>compute the inverse of a 2 × 2 matrix and use it to solve a linear system</p></li>
+      </ul>
+      <p>Objectives: Students should be able to compute the inverse of a <m>2 \times 2</m> matrix and use it to solve a linear system.</p>
+    </objectives>
+
+    <blockquote cite="Jurassic Park, 1993 film">
+      <p>
+        <q>Your scientists were so preoccupied with whether or not they could, they didn't stop to think if they should.</q>
+      </p>
+      <attribution>Spielberg and Crichton</attribution>
+    </blockquote>
+    <p>
+      The algorithm we introduce in this section <alert>could</alert> be used to compute an inverse of an <m>n \times n</m> matrix. At the end of this course, we will discuss some of the problems with our algorithm and why it can be difficult to compute a matrix inverse.
+    </p>
+  </introduction>
+
+  <subsection xml:id="subsec-inverse-definition">
+    <title>Defining the Inverse</title>
+    <definition xml:id="def-invertible">
+      <statement>
+        <p>
+          Let <m>A \in \mathbb{R}^{n \times n}</m>. <m>A</m> is <term>invertible</term> (or <term>non-singular</term>) if there is a <m>C \in \mathbb{R}^{n \times n}</m> such that:
+          <me>AC = CA = I_n</me>
+          If such a <m>C</m> exists, we write <m>C = A^{-1}</m>.
+        </p>
+        <p>
+          A matrix that is not invertible is called <term>singular</term>.
+        </p>
+      </statement>
+    </definition>
+  </subsection>
+
+  <subsection xml:id="subsec-two-by-two-inverse">
+    <title>The Inverse of a <m>2 \times 2</m> Matrix</title>
+    <theorem xml:id="thm-two-by-two-inverse">
+      <statement>
+        <p>
+          The <m>2 \times 2</m> matrix <m>A = \begin{pmatrix} a \amp b \\ c \amp d \end{pmatrix}</m> is non-singular if and only if <m>ad - bc \neq 0</m>.
+        </p>
+        <p>
+          If it is non-singular, its inverse is:
+          <me>
+            \begin{pmatrix} a \amp b \\ c \amp d \end{pmatrix}^{-1} = \frac{1}{ad - bc} \begin{pmatrix} d \amp -b \\ -c \amp a \end{pmatrix}
+          </me>
+        </p>
+      </statement>
+    </theorem>
+
+    <exercise>
+      <title>Example: Compute a <m>2 \times 2</m> Inverse</title>
+      <statement>
+        <p>State the inverse of the matrix <m>\begin{pmatrix} 2 \amp 5 \\ -3 \amp -7 \end{pmatrix}</m>.</p>
+      </statement>
+      <solution>
+        <p>
+          First, calculate the determinant: <m>(2)(-7) - (5)(-3) = -14 + 15 = 1</m>.
+        </p>
+        <p>
+          Then, applying the formula:
+          <me>
+            A^{-1} = \frac{1}{1} \begin{pmatrix} -7 \amp -5 \\ 3 \amp 2 \end{pmatrix} = \begin{pmatrix} -7 \amp -5 \\ 3 \amp 2 \end{pmatrix}
+          </me>
+        </p>
+      </solution>
+    </exercise>
+  </subsection>
+
+  <subsection xml:id="subsec-solving-systems">
+    <title>Solving a Linear System</title>
+    <exercise>
+      <statement>
+        <p>Use a matrix inverse to solve the linear system:</p>
+        <me>
+          \begin{aligned}
+          3x_1 + 4x_2 \amp = 7 \\
+          5x_1 + 6x_2 \amp = 7
+          \end{aligned}
+        </me>
+      </statement>
+      <solution>
+        <p>
+          The system can be written as <m>A\vec{x} = \vec{b}</m> where <m>A = \begin{pmatrix} 3 \amp 4 \\ 5 \amp 6 \end{pmatrix}</m>. 
+        </p>
+        <p>
+          The inverse is <m>A^{-1} = \frac{1}{18-20}\begin{pmatrix} 6 \amp -4 \\ -5 \amp 3 \end{pmatrix} = \begin{pmatrix} -3 \amp 2 \\ 2.5 \amp -1.5 \end{pmatrix}</m>.
+        </p>
+        <p>
+          Solving <m>\vec{x} = A^{-1}\vec{b}</m> gives <m>x_1 = -7, x_2 = 7</m>.
+        </p>
+      </solution>
+    </exercise>
+  </subsection>
+
+  <summary>
+    <p>
+      We explored the use of the inverse of a <m>2 \times 2</m> matrix to solve a linear system. In the next set of videos, we will explore a method to compute the inverse of an <m>n \times n</m> matrix and some of its limitations.
+    </p>
+  </summary>
+</section>
