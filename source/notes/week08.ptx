@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<section xml:id="sec-invertible-matrix-theorem">
+  <title>Module 2: The Invertible Matrix Theorem</title>
+
+  <introduction>
+    <objectives>
+      <title>Topics and Objectives</title>
+      <p>Topics: We will explore the following concepts in this video.</p>
+      <ul>
+        <li><p>the invertible matrix theorem, which is a review/synthesis of many of the concepts we have introduced</p></li>
+      </ul>
+      <p>Objectives: Students should be able to do the following after watching this video.</p>
+      <ul>
+        <li><p>characterize the invertibility of a matrix using the Invertible Matrix Theorem</p></li>
+        <li><p>construct and give examples of matrices that are/are not invertible</p></li>
+      </ul>
+    </objectives>
+
+    <p><term>Equivalent Expressions</term></p>
+    <blockquote cite="Baltasar Gracián">
+      <p>
+        <q>A synonym is a word you use when you can’t spell the other one.</q>
+      </p>
+      <attribution>Baltasar Gracián</attribution>
+    </blockquote>
+    <p>
+      The theorem we introduce in this section of the course gives us many ways of saying the same thing. Depending on the context, some will be more convenient than others.
+    </p>
+  </introduction>
+
+  <subsection xml:id="subsec-the-imt">
+    <title>The Invertible Matrix Theorem</title>
+    <theorem xml:id="thm-imt">
+      <statement>
+        <p>
+          Let <m>A</m> be an <m>n \times n</m> matrix. These statements are all equivalent.
+        </p>
+        <p>
+          <ol label="a">
+            <li><p><m>A</m> is invertible.</p></li>
+            <li><p><m>A</m> is row equivalent to <m>I_n</m>.</p></li>
+            <li><p><m>A</m> has <m>n</m> pivotal columns (all columns are pivotal).</p></li>
+            <li><p><m>A\vec{x} = \vec{0}</m> has only the trivial solution.</p></li>
+            <li><p>The columns of <m>A</m> are linearly independent.</p></li>
+            <li><p>The equation <m>A\vec{x} = \vec{b}</m> has a solution for all <m>\vec{b} \in \mathbb{R}^n</m>.</p></li>
+            <li><p>The columns of <m>A</m> span <m>\mathbb{R}^n</m>.</p></li>
+            <li><p>There is a <m>n \times n</m> matrix <m>C</m> so that <m>CA = I_n</m> (<m>A</m> has a left inverse.)</p></li>
+            <li><p>There is a <m>n \times n</m> matrix <m>D</m> so that <m>AD = I_n</m> (<m>A</m> has a right inverse.)</p></li>
+            <li><p><m>A^T</m> is invertible.</p></li>
+          </ol>
+        </p>
+      </statement>
+    </theorem>
+  </subsection>
+
+  <subsection xml:id="subsec-imt-composition">
+    <title>Invertibility and Composition</title>
+    <p>
+      The diagram below gives us another perspective on the role of <m>A^{-1}</m>.
+    </p>
+    <figure xml:id="fig-transformation-inverse">
+      <image source="w7image.png" width="60%">
+        <description>Diagram showing x mapping to Ax via multiplication by A, and Ax mapping back to x via multiplication by A-inverse.</description>
+      </image>
+    </figure>
+    <p>
+      The matrix inverse <m>A^{-1}</m> transforms <m>A\vec{x}</m> back to <m>\vec{x}</m>. This is because:
+      <me>A^{-1}(A\vec{x}) = (A^{-1}A)\vec{x} = I\vec{x} = \vec{x}</me>
+    </p>
+  </subsection>
+
+  <subsection xml:id="subsec-imt-examples">
+    <title>Examples</title>
+    
+    <exercise xml:id="ex-imt-invertible">
+      <title>Example 1: Identifying Whether a Matrix is Invertible</title>
+      <statement>
+        <p>
+          Is this matrix invertible?
+          <me>\begin{pmatrix} 1 \amp 0 \amp -2 \\ 3 \amp 1 \amp -2 \\ 0 \amp -1 \amp -1 \end{pmatrix}</me>
+        </p>
+      </statement>
+      <solution>
+        <p>
+          Performing row operations:
+          <me>
+            \begin{pmatrix} 1 \amp 0 \amp -2 \\ 3 \amp 1 \amp -2 \\ 0 \amp -1 \amp -1 \end{pmatrix} \sim 
+            \begin{pmatrix} 1 \amp 0 \amp -2 \\ 0 \amp 1 \amp 4 \\ 0 \amp -1 \amp -1 \end{pmatrix} \sim 
+            \begin{pmatrix} 1 \amp 0 \amp -2 \\ 0 \amp 1 \amp 4 \\ 0 \amp 0 \amp 3 \end{pmatrix}
+          </me>
+          The matrix has 3 pivot positions (one in every column). By the IMT, it is invertible.
+        </p>
+      </solution>
+    </exercise>
+
+    <exercise xml:id="ex-imt-expression">
+      <title>Example 2: Constructing an Expression for the Inverse</title>
+      <statement>
+        <p>
+          Suppose <m>A</m> is an invertible square matrix and
+          <me>A^2 + 4A = I</me>
+          Give an expression for <m>A^{-1}</m>.
+        </p>
+      </statement>
+      <solution>
+        <p>
+          Factoring the left side: <m>A(A + 4I) = I</m>.
+        </p>
+        <p>
+          By the definition of an inverse (and items h/i of the IMT), if <m>AB=I</m> for square matrices, then <m>B=A^{-1}</m>. 
+          Thus, <m>A^{-1} = A + 4I</m>.
+        </p>
+      </solution>
+    </exercise>
+  </subsection>
+
+  <summary>
+    <title>The Invertible Matrix Theorem: Final Notes</title>
+    <p>
+      <ul>
+        <li>
+          <p>
+            Items (h) and (i) of the invertible matrix theorem (IMT) lead us directly to the following theorem:
+            <theorem>
+              <p>If <m>A</m> and <m>B</m> are <m>n \times n</m> matrices and <m>AB = I</m>, then <m>A</m> and <m>B</m> are invertible, and <m>B = A^{-1}</m> and <m>A = B^{-1}</m>.</p>
+            </theorem>
+          </p>
+        </li>
+        <li>
+          <p>
+            The IMT is a set of equivalent statements. They divide the set of all square matrices into two separate classes: invertible, and non-invertible.
+          </p>
+        </li>
+        <li>
+          <p>
+            As we progress through this course, we will be able to add additional equivalent statements to the IMT (that deal with determinants, eigenvalues, etc).
+          </p>
+        </li>
+      </ul>
+    </p>
+  </summary>
+
+
+  <subsection xml:id="subsec-matrix-completion">
+    <title>Example 3: Matrix Completion</title>
+    <exercise xml:id="ex-singular-completion">
+      <statement>
+        <p>
+          If possible, fill in the missing elements of the matrices below with numbers so that each of the matrices are <term>singular</term>. If it is not possible to do so, state why.
+        </p>
+        <p>
+          <ol label="i">
+            <li>
+              <p>
+                <me>A = \begin{pmatrix} 1 \amp 0 \amp 1 \\ 1 \amp 1 \amp \square \\ 0 \amp 0 \amp 1 \end{pmatrix}</me>
+              </p>
+            </li>
+            <li>
+              <p>
+                <me>B = \begin{pmatrix} 1 \amp 1 \amp \square \\ 0 \amp 1 \amp 1 \\ 0 \amp 0 \amp 1 \end{pmatrix}</me>
+              </p>
+            </li>
+            <li>
+              <p>
+                <me>C = \begin{pmatrix} 1 \amp 0 \amp 0 \\ 0 \amp 1 \amp 1 \\ 0 \amp 1 \amp \square \end{pmatrix}</me>
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+      <solution>
+        <p>
+          <ol label="i">
+            <li>
+              <p>
+                <alert>Not possible.</alert> Matrix <m>A</m> is already in a form where it has three pivot positions (rows 1 and 3 already have pivots in columns 1 and 3, and row 2 has a pivot in column 2). By the IMT, it is invertible regardless of the missing entry.
+              </p>
+            </li>
+            <li>
+              <p>
+                <alert>Not possible.</alert> Similar to <m>A</m>, matrix <m>B</m> is upper triangular with non-zero entries on the diagonal (1, 1, 1). It will always have 3 pivots and thus be invertible.
+              </p>
+            </li>
+            <li>
+              <p>
+                <alert>Possible.</alert> If we let the missing entry be <m>1</m>, the second and third rows become identical (<m>0, 1, 1</m>). This makes the columns linearly dependent, so the matrix is singular.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </solution>
+    </exercise>
+  </subsection>
+
+  <subsection xml:id="subsec-mcp-context">
+    <title>Matrix Completion Problems (MCP)</title>
+    <p>
+      The previous example is a simple version of a <term>Matrix Completion Problem</term>. These are common in recitations and exams.
+    </p>
+    <aside>
+      <title>The Netflix Problem</title>
+      <p>
+        A famous real-world MCP is the Netflix Problem. Given a ratings matrix where entry <m>(i, j)</m> is the rating of movie <m>j</m> by customer <m>i</m>, many entries are missing. The goal is to predict the missing entries to make recommendations.
+      </p>
+    </aside>
+    
+  </subsection>
+
+  <summary>
+    <title>Section Summary</title>
+    <p>
+      In this section, we explored:
+      <ul>
+        <li><p>Characterizing the invertibility of a matrix using the Invertible Matrix Theorem (IMT).</p></li>
+        <li><p>Constructing and giving examples of matrices that are or are not invertible.</p></li>
+      </ul>
+    </p>
+    <p>
+      As we progress through the course, we will continue to add more equivalent statements to the IMT.
+    </p>
+  </summary>
+</section>
